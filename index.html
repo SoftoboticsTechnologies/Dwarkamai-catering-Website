@@ -39,6 +39,13 @@ h1,h2,h3,p,span,a,li,blockquote{overflow-wrap:break-word}
   .pb-by{padding-left:0!important;border-left:0!important}
 }
 @media (max-width:360px){.ft-grid{grid-template-columns:1fr!important}}
+@media (max-width:720px){
+  .mn-tabs{grid-template-columns:repeat(2,1fr)!important;gap:10px!important}
+  .mn-tabs button{padding:12px 14px!important}
+  .mn-swipe{display:block!important}
+}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+img{height:auto}
 @keyframes ltFade{from{opacity:0}to{opacity:1}}@keyframes ltPop{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
 .lt-overlay{animation:ltFade .2s ease}.lt-dialog{animation:ltPop .28s cubic-bezier(.2,.8,.2,1)}
 @keyframes occ-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -287,7 +294,8 @@ h1,h2,h3,p,span,a,li,blockquote{overflow-wrap:break-word}
   </section>
 
   <!-- Approach -->
-  <section style="background:#4a0f1c;color:#fff1df;position:relative;overflow:hidden">
+  <section style="background:#4a0f1c url('https://dwarkamaiservice.com/wp-content/uploads/2025/08/WhatsApp-Image-2025-08-07-at-15.35.20_e95e4bfa.jpg') center/cover no-repeat;color:#fff1df;position:relative;overflow:hidden">
+    <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(58,10,22,.72) 0%,rgba(74,15,28,.55) 55%,rgba(74,15,28,.4) 100%)"></div>
     <div aria-hidden="true" style="position:absolute;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(245,179,53,.16),rgba(245,179,53,0) 70%);top:-240px;left:-180px"></div>
     <div style="position:relative;max-width:1200px;margin:0 auto;padding:clamp(64px,8vw,112px) clamp(20px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(40px,6vw,80px);align-items:start">
       <div data-reveal="" style="display:flex;flex-direction:column;gap:28px">
@@ -297,8 +305,8 @@ h1,h2,h3,p,span,a,li,blockquote{overflow-wrap:break-word}
         </div>
         <div style="display:flex;flex-direction:column;gap:12px">
           <sc-for list="{{ stats }}" as="s" hint-placeholder-count="3">
-            <div style="display:flex;gap:16px;align-items:flex-start;padding:18px 20px;border-radius:18px;background:rgba(255,236,214,.05);border:1px solid rgba(255,236,214,.12)">
-              <span aria-hidden="true" style="width:44px;height:44px;border-radius:14px;background:rgba(245,179,53,.16);display:flex;align-items:center;justify-content:center;font-size:20px;flex:none">{{ s.icon }}</span>
+            <div style="display:flex;gap:20px;align-items:center;padding:18px 22px;border-radius:18px;background:rgba(33,6,13,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,236,214,.14)">
+              <span style="font-family:'Rozha One',serif;font-size:clamp(34px,3.6vw,44px);line-height:1;color:#f5b335;min-width:3.2ch;flex:none">{{ s.num }}</span>
               <p style="margin:0;font-size:15.5px;line-height:1.6;color:#f2d6c2;align-self:center">{{ s.t }}</p>
             </div>
           </sc-for>
@@ -659,7 +667,7 @@ h1,h2,h3,p,span,a,li,blockquote{overflow-wrap:break-word}
       <h2 style="margin:0;font-family:'Rozha One',serif;font-weight:400;font-size:clamp(30px,3.8vw,46px);line-height:1.1">Our Catering Menus</h2>
       <p style="margin:0;font-size:16.5px;color:#6b4e46">Pick a package to see its full menu.</p>
     </div>
-    <div role="tablist" aria-label="Menu packages" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:12px">
+    <div class="mn-tabs" role="tablist" aria-label="Menu packages" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:12px">
       <sc-for list="{{ menuTabs }}" as="t" hint-placeholder-count="4">
         <button type="button" role="tab" aria-selected="{{ t.sel }}" onClick="{{ t.pick }}" style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:16px 20px;border-radius:18px;border:1.5px solid {{ t.border }};background:{{ t.bg }};color:{{ t.color }};cursor:pointer;text-align:left;transition:background .2s,border-color .2s,transform .2s" style-hover="transform:translateY(-2px)">
           <span style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.85">{{ t.emoji }} {{ t.name }}</span>
@@ -722,6 +730,7 @@ h1,h2,h3,p,span,a,li,blockquote{overflow-wrap:break-word}
       <h2 style="margin:0;font-family:'Rozha One',serif;font-weight:400;font-size:clamp(30px,3.8vw,46px);line-height:1.1">Compare All Menus</h2>
     </div>
     <div data-reveal="" style="background:#fff;border:1px solid #f1dfbf;border-radius:24px;overflow-x:auto;-webkit-overflow-scrolling:touch">
+      <div class="mn-swipe" aria-hidden="true" style="display:none;padding:12px 18px;font-size:13px;font-weight:600;color:#8d6f62;border-bottom:1px solid #f1dfbf;position:sticky;left:0">Swipe sideways to compare →</div>
       <div role="table" aria-label="Menu comparison" style="min-width:760px;font-size:14.5px">
         <div role="row" style="display:grid;grid-template-columns:200px repeat(4,1fr);background:#4a0f1c;color:#fff1df">
           <span role="columnheader" style="padding:16px 18px;text-align:left;font-size:13px;font-weight:700;letter-spacing:.06em;white-space:nowrap;color:#f5b335">Course</span>
@@ -1188,9 +1197,9 @@ class Component extends DCLogic {
         { name: 'Delight Package', price: '₹650', items: ['Welcome Drink - 02','Soup - 01','Veg Starter - 02','Chaat - 02','Noodles, Manchurian, Pasta','Bread - 03','Curry - 03','Rice - 02','Dal - 01','Raita','Sweet - 02, Ice-cream','Papad, Salad, Water'] }
       ],
       stats: [
-        { icon: '⭐', t: 'Consistently rated 5 stars for quality, punctuality, and professionalism.' },
-        { icon: '🎉', t: 'From intimate gatherings to grand celebrations—we’ve done it all.' },
-        { icon: '🤝', t: 'Trusted by leading brands, startups, and institutions across industries.' }
+        { num: '98%', t: 'Consistently rated 5 stars for quality, punctuality, and professionalism.' },
+        { num: '10k+', t: 'From intimate gatherings to grand celebrations—we’ve done it all.' },
+        { num: '500+', t: 'Trusted by leading brands, startups, and institutions across industries.' }
       ],
       blueprint: [
         { n: '01', t: 'Understand Your Vision', d: 'We listen to your occasion, guest count, tastes and budget.' },
