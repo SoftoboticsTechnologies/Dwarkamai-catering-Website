@@ -8,7 +8,6 @@
 <body>
 <x-dc>
 <helmet>
-<title>Home - Dwarka Services</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="index, max-snippet:-1, max-image-preview:large, max-video-preview:-1, follow">
 <meta property="og:site_name" content="Dwarka Services">
@@ -58,7 +57,6 @@ img{height:auto}
 
 <div style="min-height:100vh;display:flex;flex-direction:column">
 
-<div aria-hidden="true" style="height:18px;background:repeating-linear-gradient(90deg,#f5b335 0 30px,#c2185b 30px 60px,#b8471f 60px 90px,#1f8f6a 90px 120px,#7b2d8e 120px 150px);-webkit-mask:conic-gradient(from 135deg at 50% 0,#000 90deg,#0000 0) 0 0/30px 18px repeat-x;mask:conic-gradient(from 135deg at 50% 0,#000 90deg,#0000 0) 0 0/30px 18px repeat-x"></div>
 <!-- Top bar -->
 <div style="background:#4a0f1c;color:#fbe7cf;font-size:13px">
   <div style="max-width:1200px;margin:0 auto;padding:10px clamp(20px,4vw,40px);display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;justify-content:space-between">
@@ -945,16 +943,31 @@ img{height:auto}
     </div>
   </section>
 </sc-if>
-      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
-        <div role="status" style="border:1px solid rgba(232,146,108,.5);border-radius:16px;padding:22px;font-size:16px;line-height:1.6">✓ Message sent.</div>
-      </sc-if>
+
+<sc-if value="{{ isLegal }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Legal" style="background:#4a0f1c;color:#fff1df;padding:clamp(56px,8vw,104px) clamp(20px,4vw,40px)">
+    <div style="max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:14px">
+      <span style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f5b335">Legal</span>
+      <h1 style="margin:0;font-family:'Rozha One',serif;font-weight:400;font-size:clamp(34px,5vw,60px);line-height:1.08">{{ legal.title }}</h1>
+      <p style="margin:0;font-size:15px;color:#f2d6c2">Last updated: {{ legal.updated }}</p>
+    </div>
+  </section>
+  <section style="max-width:860px;margin:0 auto;padding:clamp(48px,6vw,80px) clamp(20px,4vw,40px);display:flex;flex-direction:column;gap:32px">
+    <p style="margin:0;font-size:17px;line-height:1.8;color:#4a2a2a;text-wrap:pretty">{{ legal.intro }}</p>
+    <sc-for list="{{ legal.sections }}" as="ls" hint-placeholder-count="5">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <h2 style="margin:0;font-family:'Rozha One',serif;font-weight:400;font-size:clamp(22px,2.4vw,28px);color:#4a0f1c">{{ ls.h }}</h2>
+        <p style="margin:0;font-size:16.5px;line-height:1.8;color:#4a2a2a;text-wrap:pretty">{{ ls.p }}</p>
+      </div>
+    </sc-for>
+    <div style="border:1px solid #f1dfbf;background:#fff;border-radius:16px;padding:22px 24px;font-size:16px;line-height:1.7;color:#4a2a2a">
+      Questions? Call <a href="tel:+919341124544" style="color:#b8471f;font-weight:700">+91 93411 24544</a> or email <a href="mailto:agarwalmanish81@gmail.com" style="color:#b8471f;font-weight:700;overflow-wrap:anywhere">agarwalmanish81@gmail.com</a>.
     </div>
   </section>
 </sc-if>
 
 </main>
 
-<div aria-hidden="true" style="height:18px;background:repeating-linear-gradient(90deg,#f5b335 0 30px,#c2185b 30px 60px,#b8471f 60px 90px,#1f8f6a 90px 120px,#7b2d8e 120px 150px);-webkit-mask:conic-gradient(from 135deg at 50% 0,#000 90deg,#0000 0) 0 0/30px 18px repeat-x;mask:conic-gradient(from 135deg at 50% 0,#000 90deg,#0000 0) 0 0/30px 18px repeat-x"></div>
 <!-- Locations -->
 <section aria-label="Locations" style="background:#fff;border-top:1px solid #f1dfbf">
   <div style="max-width:1200px;margin:0 auto;padding:clamp(56px,7vw,88px) clamp(20px,4vw,40px);display:flex;flex-direction:column;gap:36px">
@@ -1011,25 +1024,10 @@ img{height:auto}
       </nav>
       <nav aria-label="Legal" style="display:flex;flex-direction:column;gap:14px">
         <span style="font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f5b335">Legal</span>
-        <a href="https://dwarkamaiservice.com/cookies/" style="color:#fff1df;font-size:15px;text-transform:capitalize" style-hover="color:#f5b335">cookies</a>
-        <a href="https://dwarkamaiservice.com/privacy/" style="color:#fff1df;font-size:15px;text-transform:capitalize" style-hover="color:#f5b335">privacy policy</a>
-        <a href="https://dwarkamaiservice.com/terms-conditions/" style="color:#fff1df;font-size:15px;text-transform:capitalize" style-hover="color:#f5b335">terms of use</a>
+        <a href="#/cookies" style="color:#fff1df;font-size:15px;text-transform:capitalize" style-hover="color:#f5b335">cookies</a>
+        <a href="#/privacy" style="color:#fff1df;font-size:15px;text-transform:capitalize" style-hover="color:#f5b335">privacy policy</a>
+        <a href="#/terms" style="color:#fff1df;font-size:15px;text-transform:capitalize" style-hover="color:#f5b335">terms of use</a>
       </nav>
-    </div>
-    <div style="display:flex;flex-wrap:wrap;gap:20px 40px;align-items:center;justify-content:space-between;padding-top:32px;border-top:1px solid rgba(255,236,214,.14)">
-      <div style="display:flex;flex-direction:column;gap:6px">
-        <span style="font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f5b335">subscribe newsletter</span>
-        <span style="font-size:15px;color:#fff1df">Subscribe our newsletter to get our latest update &amp; news</span>
-      </div>
-      <sc-if value="{{ notSubscribed }}" hint-placeholder-val="{{ true }}">
-        <form onSubmit="{{ submitNewsletter }}" style="display:flex;flex-wrap:wrap;gap:10px;flex:1;max-width:460px;min-width:min(100%,280px)">
-          <input type="email" name="email" required="" autocomplete="email" placeholder="Your email address" aria-label="Email address" style="flex:1;min-width:0;background:rgba(255,236,214,.06);border:1px solid rgba(255,236,214,.22);border-radius:999px;padding:14px 20px;color:#fff;font-size:15px;outline:none" style-focus="border-color:#f5b335;background:rgba(255,236,214,.1)">
-          <button type="submit" style="background:#f5b335;color:#4a0f1c;border:0;border-radius:999px;padding:14px 24px;font-weight:700;font-size:15px;cursor:pointer;font-family:inherit;transition:background .2s" style-hover="background:#ffc95a">Submit</button>
-        </form>
-      </sc-if>
-      <sc-if value="{{ subscribed }}" hint-placeholder-val="{{ false }}">
-        <span role="status" style="font-size:15px;color:#fff1df">✓ Thanks for subscribing!</span>
-      </sc-if>
     </div>
   </div>
 </footer>
@@ -1104,7 +1102,7 @@ img{height:auto}
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   state = { route: this.readRoute(), w: typeof window !== 'undefined' ? window.innerWidth : 1280, menu: false, scrolled: false,
-    form: { name: '', phone: '', occasion: '', package: '', comment: '' }, sent: false, formOpen: false, popupSent: false, subscribed: false, unmuted: null, menuPick: 0 };
+    form: { name: '', phone: '', occasion: '', package: '', comment: '' }, sent: false, formOpen: false, popupSent: false, unmuted: null, menuPick: 0 };
 
   heroImgs = [
     { r: '1280 / 852', src: 'assets/hero-1.png', alt: 'Dwarkamai Caterers staff at a buffet counter with brass chafing dishes' },
@@ -1115,6 +1113,37 @@ class Component extends DCLogic {
   ];
   startHero() { clearInterval(this.heroT); this.heroT = setInterval(() => this.setState(s => ({ hero: ((s.hero || 0) + 1) % this.heroImgs.length })), 2000); }
 
+  legalPages = {
+    cookies: { title: 'Cookie Policy', updated: 'October 2026',
+      intro: 'This Cookie Policy explains how Dwarka Services (“Dwarkamai”, “we”, “us”) uses cookies and similar technologies when you visit our website.',
+      sections: [
+        { h: 'What are cookies?', p: 'Cookies are small text files stored on your device by your browser. They help a website remember your preferences and understand how it is used.' },
+        { h: 'Cookies we use', p: 'We use only essential cookies and local storage needed for the website to work properly, such as remembering page settings. We may also use basic analytics to understand which pages are visited, so we can improve our content.' },
+        { h: 'Third-party content', p: 'Some pages include content from third parties, such as embedded maps, videos or WhatsApp links. These services may set their own cookies, which are governed by their own policies.' },
+        { h: 'Managing cookies', p: 'You can block or delete cookies at any time through your browser settings. Blocking essential cookies may affect how parts of the website work.' },
+        { h: 'Changes to this policy', p: 'We may update this Cookie Policy from time to time. Any changes will be posted on this page with a revised “last updated” date.' }
+      ] },
+    privacy: { title: 'Privacy Policy', updated: 'October 2026',
+      intro: 'Dwarka Services (“Dwarkamai”, “we”, “us”) respects your privacy. This policy explains what information we collect, how we use it and the choices you have.',
+      sections: [
+        { h: 'Information we collect', p: 'When you request a quote, contact us or message us on WhatsApp, we collect the details you provide, such as your name, phone number, email address, event type, date, venue, guest count and menu preferences.' },
+        { h: 'How we use your information', p: 'We use your information only to respond to enquiries, prepare quotes, plan and deliver catering for your event, send booking updates and improve our services. We do not sell your personal information.' },
+        { h: 'Sharing of information', p: 'We share information only where needed to deliver your event, for example with our staff or venue partners, or where required by law. Messages sent through WhatsApp are also subject to WhatsApp’s privacy policy.' },
+        { h: 'Data security & retention', p: 'We take reasonable measures to protect your information from unauthorised access. We keep it only for as long as needed for your booking, our records and legal requirements.' },
+        { h: 'Your rights', p: 'You may ask us to access, correct or delete your personal information at any time by contacting us using the details below.' },
+        { h: 'Changes to this policy', p: 'We may update this Privacy Policy from time to time. Any changes will be posted on this page with a revised “last updated” date.' }
+      ] },
+    terms: { title: 'Terms of Use', updated: 'October 2026',
+      intro: 'These Terms of Use govern your use of the Dwarka Services website and our catering services. By using this website or booking with us, you agree to these terms.',
+      sections: [
+        { h: 'Bookings & quotes', p: 'Quotes shared through the website, phone or WhatsApp are estimates based on the details you provide. A booking is confirmed only after the menu, guest count, date and advance payment are agreed with our team.' },
+        { h: 'Pricing & payments', p: 'Package prices shown on the website are per plate and may change based on menu customisation, guest count, location and season. Payment terms will be shared at the time of booking.' },
+        { h: 'Changes & cancellations', p: 'Changes to guest count or menu should be communicated as early as possible and are subject to availability. Cancellation and refund terms depend on how close to the event the cancellation is made, and will be confirmed at booking.' },
+        { h: 'Website content', p: 'All text, images, logos and menus on this website belong to Dwarka Services and may not be copied or reused without our written permission. Photos are for illustration; actual presentation may vary.' },
+        { h: 'Limitation of liability', p: 'We work hard to keep website information accurate, but we do not guarantee it is always complete or up to date. We are not liable for any loss arising from use of this website or from third-party links.' },
+        { h: 'Governing law', p: 'These terms are governed by the laws of India, and any disputes are subject to the jurisdiction of the courts in Bangalore, Karnataka.' }
+      ] }
+  };
   readRoute() { return (location.hash.replace(/^#\/?/, '').split('/')[0] || 'home'); }
 
   componentDidMount() {
@@ -1130,7 +1159,10 @@ class Component extends DCLogic {
     this.setTitle();
     this.startHero();
   }
-  componentDidUpdate(_, prev) {
+  componentDidUpdate() {
+    // The runtime doesn't pass prevState, so remember the last seen values ourselves.
+    const prev = this.prevSnap || { route: this.state.route, formOpen: false };
+    this.prevSnap = { route: this.state.route, formOpen: this.state.formOpen };
     if (prev.route !== this.state.route) { this.setupReveal(); this.setTitle(); }
     if (prev.formOpen !== this.state.formOpen) {
       document.body.style.overflow = this.state.formOpen ? 'hidden' : '';
@@ -1148,7 +1180,7 @@ class Component extends DCLogic {
     clearInterval(this.heroT);
   }
   setTitle() {
-    const t = { home: 'Home', about: 'About', services: 'services', menus: 'Menus', pricing: 'Pricing', contact: 'Contact' }[this.state.route] || 'Home';
+    const t = { home: 'Home', about: 'About', services: 'services', menus: 'Menus', pricing: 'Pricing', contact: 'Contact', cookies: 'Cookie Policy', privacy: 'Privacy Policy', terms: 'Terms of Use' }[this.state.route] || 'Home';
     document.title = t + ' - Dwarka Services';
   }
   setupReveal() {
@@ -1171,8 +1203,8 @@ class Component extends DCLogic {
   }
 
   renderVals() {
-    const { route, w, menu, form, sent, subscribed, scrolled, unmuted } = this.state;
-    const r = ['home','about','services','menus','pricing','contact'].includes(route) ? route : 'home';
+    const { route, w, menu, form, sent, scrolled, unmuted } = this.state;
+    const r = ['home','about','services','menus','pricing','contact','cookies','privacy','terms'].includes(route) ? route : 'home';
     const navDef = [['Home','home','#/'],['About','about','#/about'],['Services','services','#/services'],['Menus','menus','#/menus'],['Pricing','pricing','#/pricing'],['Contact','contact','#/contact']];
     const nav = navDef.map(([label, key, href]) => ({ label, href, current: key === r ? 'page' : undefined, color: key === r ? '#b8471f' : '#2b1216' }));
     const field = k => e => this.setState({ form: { ...this.state.form, [k]: e.target.value } });
@@ -1180,7 +1212,7 @@ class Component extends DCLogic {
     return {
       nav, wide: w >= 1024, narrow: w < 1024,
       headerLine: scrolled ? '#e9cc98' : 'transparent',
-      isHome: r === 'home', isAbout: r === 'about', isServices: r === 'services', isMenus: r === 'menus', isPricing: r === 'pricing', isContact: r === 'contact',
+      isHome: r === 'home', isAbout: r === 'about', isServices: r === 'services', isMenus: r === 'menus', isPricing: r === 'pricing', isContact: r === 'contact', isLegal: !!this.legalPages[r], legal: this.legalPages[r] || this.legalPages.privacy,
       toggleMenu: () => this.setState({ menu: !menu }), closeMenu: () => this.setState({ menu: false }),
       menuOpenStr: menu ? 'true' : 'false', menuHidden: menu ? 'false' : 'true',
       menuPointer: menu ? 'auto' : 'none', menuOpacity: menu ? 1 : 0, menuTransform: menu ? 'translateX(0)' : 'translateX(105%)',
@@ -1290,8 +1322,7 @@ class Component extends DCLogic {
       overlayClick: e => { if (e.target === e.currentTarget) this.setState({ formOpen: false }); },
       submitPopup: e => { e.preventDefault(); this.setState({ popupSent: true }); },
       sent, notSent: !sent, submitContact: e => { e.preventDefault(); this.setState({ sent: true }); },
-      waFormLink: 'https://wa.me/919341124544?text=' + encodeURIComponent(['Hi Dwarkamai, I would like to enquire about catering.', form.name && 'Name: ' + form.name, form.phone && 'Phone: ' + form.phone, form.occasion && 'Occasion: ' + form.occasion, form.package && 'Package: ' + form.package, form.comment && 'Message: ' + form.comment].filter(Boolean).join('\n')),
-      subscribed, notSubscribed: !subscribed, submitNewsletter: e => { e.preventDefault(); this.setState({ subscribed: true }); }
+      waFormLink: 'https://wa.me/919341124544?text=' + encodeURIComponent(['Hi Dwarkamai, I would like to enquire about catering.', form.name && 'Name: ' + form.name, form.phone && 'Phone: ' + form.phone, form.occasion && 'Occasion: ' + form.occasion, form.package && 'Package: ' + form.package, form.comment && 'Message: ' + form.comment].filter(Boolean).join('\n'))
     };
   }
 }
